@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+    <!--
+.bd-navbar {
+  min-height: 4rem;
+  background-color: #563d7c;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+    -->
+    </style>
+
+    <title>아파트 경매 계산기</title>
+  </head>
+  <body>
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+      <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+          <li class="nav-item active">
+            <a class="nav-link " href="/">아파트 경매 계산기</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="container overflow-auto">
+      <div class="input-group mb-3" style="margin-top:1em">
+        <div class="input-group-prepend">
+          <span class="input-group-text">기준가</span>
+        </div>
+        <input type="text" class="form-control" id="target_price" value="10000">
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">비용</span>
+        </div>
+        <input type="text" class="form-control" id="cost_ratio" value="8">
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">이익</span>
+        </div>
+        <input type="text" class="form-control" id="benefit_ratio" value="10">
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">경락대출 비율</span>
+        </div>
+        <input type="text" class="form-control" id="loan_ratio" value="70">
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">대출이자</span>
+        </div>
+        <input type="text" class="form-control" id="loan_rate" value="7">
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="input-group mb-3" style="margin-top:1em">
+        <div class="input-group-prepend">
+          <span class="input-group-text">기준가</span>
+        </div>
+        <input type="text" class="form-control" id="target_price2" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">비용</span>
+        </div>
+        <input type="text" class="form-control cost_price" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">수익</span>
+        </div>
+        <input type="text" class="form-control" id="benefit_price" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">입찰가</span>
+        </div>
+        <input type="text" class="form-control" id="bid_price" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">경락대출</span>
+        </div>
+        <input type="text" class="form-control" id="loan_price" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">이자비용</span>
+        </div>
+        <input type="text" class="form-control" id="loan_interest" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">월 이자</span>
+        </div>
+        <input type="text" class="form-control" id="monthly_interest" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">실 투자금 합계</span>
+        </div>
+        <input type="text" class="form-control" id="total_investment" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">실 투자금</span>
+        </div>
+        <input type="text" class="form-control" id="investment" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">비용</span>
+        </div>
+        <input type="text" class="form-control cost_price" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">총 비용</span>
+        </div>
+        <input type="text" class="form-control" id="lum_sum" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">만원</span>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">예상 수익율</span>
+        </div>
+        <input type="text" class="form-control" id="earnings_rate" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text">%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+<!--
+var target_price;
+var cost_ratio;
+var benefit_ratio;
+var cost;
+var benefit;
+var bid;
+var loan_price;
+
+function invalidate() {
+  target_price = $("#target_price").val();
+  cost_ratio = $("#cost_ratio").val();
+  benefit_ratio = $("#benefit_ratio").val();
+  loan_ratio =  $("#loan_ratio").val();
+  loan_rate =  $("#loan_rate").val();
+
+  cost = parseInt(target_price * cost_ratio / 100);
+  benefit = parseInt(target_price * benefit_ratio / 100);
+  bid = target_price - cost - benefit;
+  loan_price = parseInt(bid * loan_ratio / 100);
+  loan_interest = parseInt(loan_price * loan_rate / 100);
+  monthly_interest = parseInt(loan_interest / 12);
+  investment = bid - loan_price;
+  total_investment = investment + cost;
+  lum_sum = bid + cost;
+  earnings_rate = benefit / total_investment * 100;
+
+  $("#target_price2").val(target_price);
+  $(".cost_price").val(cost);
+  $("#benefit_price").val(benefit);
+  $("#bid_price").val(bid);
+  $("#loan_price").val(loan_price);
+  $("#loan_interest").val(loan_interest);
+  $("#monthly_interest").val(monthly_interest);
+  $("#investment").val(investment);
+  $("#total_investment").val(total_investment);
+  $("#lum_sum").val(lum_sum);
+  $("#earnings_rate").val(earnings_rate);
+}
+
+$(document).ready(invalidate);
+$("input").change(invalidate);
+-->
+    </script>
+  </body>
+</html>
